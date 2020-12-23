@@ -6,3 +6,16 @@
 #       Пользователь ввел число 8. Результат: 8, 7, 5, 3, 3, 2.
 #       Пользователь ввел число 1. Результат: 7, 5, 3, 3, 2, 1.
 #       Набор натуральных чисел можно задать непосредственно в коде, например, my_list = [7, 5, 3, 3, 2].
+
+ratings = [3, 7, 2, 5, 3, 1, 9]
+
+raw_input = input('Поставьте оценку от 1 до 10, где 10 - высшая оценка: ')
+if raw_input.isdecimal():
+    rating = int(raw_input)
+    if rating < 1 or rating > 10:
+        print('Оценка находится за пределами ограничений.')
+    else:
+        ratings.append(rating)
+        ratings.sort(reverse=True)
+        for _ in ratings:
+            print(_, end=' ')

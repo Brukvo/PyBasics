@@ -10,7 +10,8 @@ lst_types = [
     True,
     ['element1', 'element2'],
     {'last_year': 2019, 'this_year': 2020, 'next_year': 2021},
-    (23, 12)
+    (23, 12),
+    {23, 12, 2020, 21}
 ]
 
 # Можно и так сделать :)
@@ -33,5 +34,6 @@ user_list = user_list_raw.split(',')
 
 for elem in user_list:
     if user_list.index(elem) % 2:
-        user_list[user_list.index(elem)], user_list[user_list.index(elem) - 1] = \
-            user_list[user_list.index(elem) - 1], user_list[user_list.index(elem)]
+        prev_item = user_list[user_list.index(elem) - 1]
+        next_item = user_list[user_list.index(elem)]
+        prev_item, next_item = next_item, prev_item

@@ -18,3 +18,36 @@
 #       “количество”: [5, 2, 7],
 #       “ед”: [“шт.”]
 #   }
+ERROR_MSG = 'Ошибка при вводе данных. Попробуйте ещё раз.'
+
+counter = 1
+goods = []
+raw_price, raw_qty = '', ''
+
+try:
+    while True:
+        name = input('Введите название товара: ')
+        while not raw_price.isdecimal():
+            raw_price = input('Введите цену за единицу: ')
+            if raw_price.isdecimal():
+                price = int(raw_price)
+                break
+            else:
+                print(ERROR_MSG)
+        while not raw_qty.isdecimal():
+            raw_qty = input('Введите количество на складе в виде целого числа: ')
+            if raw_qty.isdecimal():
+                qty = int(raw_qty)
+                break
+            else:
+                print(ERROR_MSG)
+        measure = input('Укажите единицу измерения, например, кг или г: ')
+        goods.append(
+            (counter, {'название': name, 'цена': price, 'количество': qty, 'ед': measure})
+        )
+        raw_qty, raw_price = '', ''
+        counter += 1
+        print('-' * 80)
+except KeyboardInterrupt:
+    for elem in goods:
+        print(elem)
