@@ -22,6 +22,8 @@ ERROR_MSG = 'Ошибка при вводе данных. Попробуйте �
 
 counter = 1
 goods = []
+analytics = {}
+names_list, prices_list, qty_list, measure_list = [], [], [], []
 raw_price, raw_qty = '', ''
 
 try:
@@ -48,6 +50,24 @@ try:
         raw_qty, raw_price = '', ''
         counter += 1
         print('-' * 80)
+        choice = input('Продолжить ввод данных? (Д/н/Y/n): ')
+        if choice.lower() == 'д' or choice.lower() == 'y':
+            continue
+        break
+
+    for good in goods:
+        names_list.append(good[1]['название'])
+        prices_list.append(good[1]['цена'])
+        qty_list.append(good[1]['количество'])
+        measure_list.append(good[1]['ед'])
+
+    analytics['название'] = names_list
+    analytics['цена'] = prices_list
+    analytics['количество'] = qty_list
+    analytics['ед'] = measure_list
+
+    print(analytics)
 except KeyboardInterrupt:
     for elem in goods:
         print(elem)
+
