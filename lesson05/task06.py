@@ -14,3 +14,11 @@
 
 {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
+raw_lines = None
+subjects = []
+
+with open('subjects.txt', 'r') as file:
+    raw_lines = file.readlines()
+
+for line in raw_lines:
+    subjects.append(raw_lines.split()[0][:-1])
