@@ -15,10 +15,19 @@
 {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
 raw_lines = None
-subjects = []
+subjects_lst, subj_quan, subj_types = [], [], ['(л)', '(пр)', '(лаб)']
+subjects = {}
 
 with open('subjects.txt', 'r') as file:
     raw_lines = file.readlines()
 
 for line in raw_lines:
-    subjects.append(raw_lines.split()[0][:-1])
+    subjects_lst.append(line.split()[0][:-1])
+    subj_quan.append(line.split()[1:])
+    for work in subj_quan:
+        for _ in subj_types:
+            if _ in work:
+                work.replace(_, '')
+                work = int(work)
+
+    
