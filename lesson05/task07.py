@@ -19,3 +19,26 @@
 
 Подсказка: использовать менеджеры контекста.
 """
+import json
+
+
+rawfile = None
+common_list, firms_list, avg_profit = [], {}, {}
+name, firm_profit = '', []
+count = 0
+
+with open('org.txt', 'r') as file:
+    rawfile = file.readlines()
+
+for line in rawfile:
+    name = line.split()[0]
+    firms_list[name] = int(line.split()[2]) - int(line.split()[3])
+
+pos_income = [_ for _ in firms_list.values() if _ > 0]
+avg_profit['average_profit'] = int(sum(pos_income) / len(pos_income))
+
+common_list.append(firms_list)
+common_list.append(avg_profit)
+
+with open('org.json', 'w') as json_file:
+    json_file.write(json.dumps(common_list))
