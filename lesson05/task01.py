@@ -5,6 +5,7 @@ file_content, user_input = [], ''
 
 while not user_input:
     user_input = input('Введите любые символы для записи в файл или Enter для завершения ввода: ')
+    file_content.append(user_input)
 
 with open('user_input.txt', 'a') as file:
-    file.writelines(user_input)
+    file.writelines(file_content)
