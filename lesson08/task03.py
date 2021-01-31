@@ -25,7 +25,8 @@ user_input = None
 int_list = []
 while not user_input == '':
     try:
-        user_input = input('Введите целое число для добавления список, или Enter, чтобы закончить работу: ')
+        user_input = input('Введите целое число для добавления список, '
+                           'или Enter, чтобы закончить работу: ')
         if not user_input.isnumeric():
             raise NotFullyInt('ОШИБКА! Введено не число. Пропускаем.')
         elif user_input == '':

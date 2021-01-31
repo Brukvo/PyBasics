@@ -18,14 +18,15 @@ user_input1 = int(user_input1)
 
 user_input2 = input('Введите делитель: ')
 while not user_input2.isnumeric():
-    user_input2 = input('Введено НЕ число. Введите число: ')
-try:
-    user_input2 = int(user_input2)
-    if user_input2 == 0:
-        raise ZeroDiv('Ой! Вы ввели 0 в качестве делителя!')
-except ZeroDiv as err:
-    print(err)
-    print('Мы добавим единицу, чтобы избежать недоразумений.')
-    user_input2 += 1
+    try:
+        user_input2 = input('Введено НЕ число. Введите число: ')
+        if not user_input2.isnumeric():
+            continue
+        elif int(user_input2) == 0:
+            raise ZeroDiv('Ой! Вы ввели 0 в качестве делителя!')
+    except ZeroDiv as err:
+        print(err)
+        print('Введите, пожалуйста, НЕ нулевое число.')
+        continue
 
 print('Результат деления:', user_input1 / user_input2)
